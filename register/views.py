@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse
 from . import models
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -22,12 +23,18 @@ def success(request):
 
 def register(request):
     if request.method == "POST":
-        models.create_user(request.POST)
-        request.session['is_logged_in'] = True
-        if 'user_email' not in request.session:
-            request.session['user_email'] = request.POST['email']
-        print("Is logged in (session):", request.session['is_logged_in'])
-        return redirect('/success')
+        errors = models.User.objects.basic_validator(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect('/')
+        else:
+            models.create_user(request.POST)
+            request.session['is_logged_in'] = True
+            if 'user_email' not in request.session:
+                request.session['user_email'] = request.POST['email']
+            print("Is logged in (session):", request.session['is_logged_in'])
+            return redirect('/success')
     else:
         HttpResponse("Something went wrong!")
 

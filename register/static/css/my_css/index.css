@@ -44,3 +44,7 @@
     border: 0.1vh solid black;
 
 }
+
+.messages {
+    color: red;
+}
