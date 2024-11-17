@@ -53,6 +53,12 @@ def login(request):
                     request.session['user_email'] = request.POST['email']
                 print("Is logged in (session):", request.session['is_logged_in'])
                 return redirect('/success')
+            else:
+                errors = {'password' : "Wrong password!"}
+                if len(errors) > 0:
+                    for key, value in errors.items():
+                        messages.error(request, value)
+                return redirect('/')
         else:
             HttpResponse("Email not found")    
 
