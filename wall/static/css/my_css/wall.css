@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+.container {
+    padding: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: burlywood;
+    height: 10vh;
+}
+
+p {
+    color: green;
+    padding: 2vh;
+}
+
+em {
+    color: darkblue;
+    text-decoration: underline;
+}
+
+.message {
+    width: 90vh;
+}
+
+.message textarea {
+    width: 88.75vh;
+    height: 10vh;
+    resize: none;
+    font-size: 20px;
+    padding: 0.5vh;
+}
+
+.btn-post-message {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-post-message button {
+    width: 15vh;
+    height: 3.5vh;
+    font-weight: 500;
+    color: white;
+    background-color: rgb(79, 79, 238);
+    box-shadow: 0.3vh 0.3vh 0.3vh black;
+}
+
+.btn-post-message button:hover {
+    cursor: pointer;
+}
+
+hr {
+    color: #000000;
+    width: 89vh;
+    
+}
+
+.comment {
+    padding: 0vh 0vh 0vh 5vh;
+}
+
+.comment textarea {
+    width: 80vh;
+    height: 5vh;
+    resize: none;
+    font-size: 2vh;
+    padding: 0.5vh;
+}
+
+.btn-post-comment {
+    display: flex;
+    justify-content: flex-end;
+    width: 80vh;
+}
+
+.btn-post-comment button {
+    width: 13vh;
+    height: 3vh;
+    font-weight: 500;
+    color: white;
+    background-color: green;
+    box-shadow: 0.3vh 0.3vh 0.3vh black;
+}
+
+.btn-post-comment button:hover {
+    cursor: pointer;
+}

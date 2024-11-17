@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'css/my_css/wall.css' %}">
+</head>
+<body>
+
+    <nav>
+        <h1>CodingDojo Wall</h1>
+        <h3>Welcome, <em>{{user.first_name}} {{user.last_name}}</em></h3>
+        <a href="/signout">Sign Out</a>
+    </nav>
+    <div class="container">
+        <form action="/wall/post_message" method="post" class="message">
+            {% csrf_token %}
+            <h2>Post a message:</h2>
+            <textarea name="message" id="message" placeholder="post a message"></textarea>
+            <div class="btn-post-message">
+                <button type="submit" >Post a message!</button>
+            </div>
+        </form>
+        <br>
+
+        <div class="message">
+            {% for message in messages %}
+            <h3>{{message.user.first_name}} {{message.user.last_name}} - {{message.created_at}}</h3>
+            <hr>
+            <p>{{message.message}}</p>
+            <div class="comment">
+                {%for comment in message.comments.all %}
+                <h4>{{comment.user.first_name}} {{comment.user.last_name}} - {{comment.created_at}}</h4>
+                <hr>
+                <p>{{comment.comment}}</p>
+                {% endfor %}
+                <form action="/wall/post_comment" method="post">
+                    {% csrf_token %}
+                    <h4>Post a comment:</h4>
+                    <input name="message_id" type="hidden" value="{{message.id}}">
+                    <textarea name="comment" id="comment" placeholder="post a message"></textarea>    
+                    <div class="btn-post-comment">
+                        <button type="submit" >Post a message!</button>
+                    </div>
+                </form>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

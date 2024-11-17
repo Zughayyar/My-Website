@@ -1,5 +1,6 @@
 from django.db import models
-import bcrypt, re
+import bcrypt, re # type: ignore
+
 
 class UserManager(models.Manager):
     def basic_validator(self, data):

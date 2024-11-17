@@ -6,14 +6,11 @@ from django.contrib import messages
 def index(request):
     if 'is_logged_in' not in request.session:
         request.session['is_logged_in'] = False
-    print("Is logged in (session):", request.session['is_logged_in'])
     return render(request, "index.html")
 
 def success(request):
     if request.session['is_logged_in'] is True:
         logged_user = models.get_user_by_email(request.session['user_email'])
-        print(len(logged_user))
-        print(logged_user[0]) 
         context = {
             'user' : logged_user[0]
         }
@@ -33,8 +30,7 @@ def register(request):
             request.session['is_logged_in'] = True
             if 'user_email' not in request.session:
                 request.session['user_email'] = request.POST['email']
-            print("Is logged in (session):", request.session['is_logged_in'])
-            return redirect('/success')
+            return redirect('/wall')
     else:
         HttpResponse("Something went wrong!")
 
@@ -51,8 +47,7 @@ def login(request):
                 request.session['is_logged_in'] = True
                 if 'user_email' not in request.session:
                     request.session['user_email'] = request.POST['email']
-                print("Is logged in (session):", request.session['is_logged_in'])
-                return redirect('/success')
+                return redirect('/wall')
             else:
                 errors = {'password' : "Wrong password!"}
                 if len(errors) > 0:
