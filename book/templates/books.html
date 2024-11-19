@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my_css/books.css' %}">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h3>Welcome, <em>{{user.first_name}}</em></h3>
+            <a href="/wall">back to wall</a>
+            <a href="/signout">Sign Out</a>
+        </nav>
+        <hr>
+        <div class="books">
+            <div class="books-add">
+                <form action="" method="post">
+                    <h2>Add a Favorite Book</h2>
+                    <br>
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" class="form-control" placeholder="book title">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
+            <div class="books-show">
+                <h2>All Books</h2>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="{% static 'js/bootstrap/bootstrap.js' %}" ></script>
+</body>
+</html>

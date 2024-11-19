@@ -1,5 +1,5 @@
 from django.db import models
-from register.models import User, UserManager
+from register.models import User
 
 class Message(models.Model):
     user = models.ForeignKey(User,on_delete=models.DO_NOTHING,related_name="messages")
